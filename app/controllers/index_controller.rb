@@ -1,0 +1,31 @@
+class IndexController < ApplicationController
+	def index	
+	end
+
+	def create_session
+	    	if client= Client.authenticate(params[:email],params[:password])
+	      		session[:client_id]=client.id
+	      		redirect_to root_path
+	    	else
+	      		flash.now[:alert] = "Contraseña o correo inválidos"
+	      		render :index
+	    	end
+	end	
+	
+		
+  	
+
+  	def destroy
+	    	session[:client_id] = nil
+	    	redirect_to :back
+  	end
+
+	private
+		def set_client
+			@client = current_client
+
+		end
+		def client_params
+    		params.require(:client).permit(:name, :surname, :email, :address, :password)
+  		end
+end

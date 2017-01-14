@@ -1,0 +1,102 @@
+<!--Preloader -->
+<div class="preloader-background">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo"><img class="siskos-logo" src="/assets/siskos.png"></a>
+            <ul id="items-menu" class="right">
+                <li class="waves-effect waves-teal btn">
+                    <div class="div-option"><img class="icono-silueta" src="/assets/index/silueta.png"></div>
+                    <p>Servicio</p>
+                    <ul id="dropdown3" >
+                        <li><a href="serigraphy">Serigrafía</a></li>
+                        <li><a>Sublimación</a></li>
+                        <li><a>Impr.Digital</a></li>
+                        <li><a>Tampografía</a></li>
+                        <li><a>Bordados</a></li><br>
+                        <li><a>Laser</a></li>
+                    </ul>
+                </li>
+                <% if session[:client_id].nil? %>
+                	<li id="register" class="waves-effect waves-teal btn">
+                    	<div class="div-option"><img class="icono-silueta" src="/assets/index/silueta.png"></div>
+                   	<%= link_to 'sign_up' do %>
+			<p>Crear cuenta </p><br>
+			<%end%>
+				
+         
+                	</li>
+                	<li id="login" class="waves-effect waves-light btn">
+                    	<div class="div-option"><img class="icono-silueta" src="/assets/index/silueta.png"></div>
+			<%= link_to 'login' do %>                    	
+			<p>Login</p><br>
+                    	
+			<%end%>			
+                   	</li>
+		
+		
+		<% else %>
+		<li  class="waves-effect waves-teal btn" style="min-width: 180px;height:36px;">
+                        <div class="div-option"><img class="icono-silueta" src="/assets/index/silueta.png"></div>
+                <%= button_to :action => 'destroy', :controller => 'index' do %>                        
+                <p>CERRAR </p><br>
+        
+            <%end%> 
+        </li>   
+		<%end%>
+                <li class="waves-effect waves-light btn">
+                    <div class="div-option"><img class="icono-silueta" src="/assets/index/cart.png"></div>
+                    <a href="cart"><p>Carrito</p></a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<section id="content" class="row">
+    <div class="col l2 m2 s8 div-promotion-taza offset-l2 offset-m2 offset-s2">
+        <div class="price-promotion-taza">15€</div>
+        <div class="hover-content-taza">
+            <p>2 tazas personalizadas</p>
+            <p style="margin-top: 0">por sólo 15€</p>
+        </div>
+        <a href="cart.html" class="btn">COMPRAR</a>
+    </div>
+    <div class="col l2 m2 s8 div-promotion-boligrafo offset-l1 offset-m1 offset-s2">
+        <div class="price-promotion-boligrafo">6€</div>
+        <div class="hover-content-boligrafo">
+            <p>6 bolígrafos personalizados</p>
+            <p style="margin-top: 0">por sólo 6€</p>
+        </div>
+        <a href="cart.html" class="btn">COMPRAR</a>
+    </div>
+    <div class="col l2 m2 s8 div-promotion-mechero offset-l1 offset-m1 offset-s2">
+        <div class="price-promotion-mechero">10€</div>
+        <div class="hover-content-mechero">
+            <p>4 mecheros personalizados</p>
+            <p style="margin-top: 0">por sólo 15€</p>
+        </div>
+        <a href="cart.html" class="btn">COMPRAR</a>
+    </div>
+
+</section>
+<section>
+  <%= render "footer"%>
+</section>
+<script src="/assets/jquery.min.js"></script>
+<script src="/assets/materialize.min.js"></script>
+<script src="/assets/script_promotions.js"></script>
+<script src="/assets/materialize.min.js"></script>

@@ -1,0 +1,423 @@
+<!--Preloader -->
+<div class="preloader-background">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Barra de navegación-->
+<header>
+    <nav>
+        <div class="nav-wrapper">
+            <div class="row">
+                <div class="col l3 m3 s3">
+                    <a href="/" class="brand-logo">
+			<img class="siskos-logo" src="/assets/siskos.png">
+		    </a>
+                </div>
+                <div class="col l9 m9 s9">
+                    <ul id="items-menu" class="right">
+                        <li class="waves-effect waves-yellow btn" style="min-width:180px; width: 20%; margin-left: 160px; !important;">
+                            <div class="div-option">
+				<img class="icono-silueta" src="/assets/serigraphy/silueta.png"></div>
+                            <p>Servicio</p>
+                            <ul id="dropdown3">
+                                <li>
+					<%= link_to '/' do %>
+						<p>Principal</p>
+					<% end %>
+				</li>
+                                <li><a>Sublimación</a></li>
+                                <li><a>Impr.Digital</a></li>
+                                <li><a>Tampografía</a></li>
+                                <li><a>Bordados</a></li>
+                                <br>
+                                <li><a>Laser</a></li>
+                            </ul>
+                        </li>
+                        <% if session[:client_id].nil? %>
+                	<li id="register" class="waves-effect waves-teal btn">
+                    	<div class="div-option"><img class="icono-silueta" src="/assets/serigraphy/silueta.png"></div>
+                   	<%= link_to 'sign_up' do %>
+			<p>Crear cuenta </p><br>
+			<%end%>
+				
+         
+                	</li>
+                	<li id="login" class="waves-effect waves-light btn">
+                    	<div class="div-option"><img class="icono-silueta" src="/assets/serigraphy/silueta.png"></div>
+			<%= link_to 'login' do %>                    	
+			<p>Login</p><br>
+                    	
+			<%end%>			
+                   	</li>
+		
+		
+		<% else %>
+		<li  class="waves-effect waves-teal btn">
+                    	<div class="div-option"><img class="icono-silueta" src="/assets/serigraphy/silueta.png"></div>
+         		<%= button_to :action => 'destroy', :controller => 'index' do %>                    	
+				<p>Cerrar </p><br>
+                    		<%flash.each do |name,msg| -%>
+					<%= content_tag :div,msg, class: name%>
+				<%end-%>
+			<%end%>	
+		</li>	
+		<%end%>
+                        <li class="waves-effect waves-yellow btn">
+                            <div class="div-option"><img class="icono-silueta" src="/assets/serigraphy/cart.png"></div>
+                            <a href="cart"><p>Carrito</p></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--Fin barra de navegación-->
+<section id="content">
+    <div class="myContainer">
+        <div class="row" style="min-height: 600px">
+            <!--En pantallas medias o superiores-->
+	     <%= form_for @product, url: {action: "home_serigraphy"} do |f| %>
+
+		<%= f.fields_for :serigraphy, Serigraphy.new do |se| %>
+            <!--<form action="#">-->
+                <div class="col l8 m8 custom-button-div">
+                    <a href="#" class="waves-effect waves-light custom-button btn hvr-forward">PERSONALICE SU DISEÑO</a>
+                </div>
+                <div class="col l7 m7 offset-l1 serigraphy-prev-med-and-up hide-on-small-and-down">
+                    <a class="close-button btn">X</a>
+                    <p>Previsualizador</p>
+                    <div class="row prev-up">
+                        <div class="col l3 m3 vertical-align">
+                            <p class="prev-colors">COLOR CAMISETA</p>
+                            <div class="row prev-colors">
+                                <div class="col l1 m1 s1 choose-color-1">
+                                    <p>
+					<%= se.check_box :color,{:id => "purple",:name => "groupColorShirt"},"purple"%>
+                                    
+                                        <label for="purple"></label>
+                                    </p>
+                                </div>
+                                <div class="col l1 m1 s1 choose-color-2">
+                                    <p>
+                                        <%= se.check_box :color,{:id => "blue",:name => "groupColorShirt"},"blue"%>
+                                        <label for="blue"></label>
+                                    </p>
+                                </div>
+                                <div class="col l1 m1 s1 choose-color-3">
+                                    <p>
+                                        <%= se.check_box :color,{:id => "yellow",:name => "groupColorShirt"},"yellow"%>
+                                        <label for="yellow"></label>
+                                    </p>
+                                </div>
+                                <div class="col l1 m1 s1 choose-color-4">
+                                    <p>
+					<%= se.check_box :color,{:id => "orange",:name => "groupColorShirt"},"orange"%>
+                                        <label for="orange"></label>
+                                    </p>
+                                </div>
+                                <div class="col l1 m1 s1 choose-color-5">
+                                    <p>
+                                        <input name="groupColorShirt" type="checkbox" id="red" value="red">
+                                        <label for="red"></label>
+                                    </p>
+                                </div>
+                                <div class="col l1 m1 s1 choose-color-6">
+                                    <p>
+                                        <%= se.check_box :color,{:id => "green",:name => "groupColorShirt"},"green"%>
+                                        <label for="green"></label>
+                                    </p>
+                                </div>
+                                <div class="col l1 m1 s1 choose-color-7">
+                                    <p>
+                                         <%= se.check_box :color,{:id => "aqua",:name => "groupColorShirt"},"aqua"%>
+                                        <label for="aqua"></label>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row prev-colors">
+                                <div class="col l1 m1 s1 choose-color-8">
+                                    <p>
+                                         <%= se.check_box :color,{:id => "black",:name => "groupColorShirt"},"black"%>
+                                        <label for="black"></label>
+                                    </p>
+                                </div>
+                                <div class="col l1 m1 s1 choose-color-9">
+                                    <p>
+                                         <%= se.check_box :color,{:id => "white",:name => "groupColorShirt"},"white"%>
+                                        <label for="white"></label>
+                                    </p>
+                                </div>
+                                <div class="col l1 m1 s1 choose-color-10">
+                                    <p>
+                                         <%= se.check_box :color,{:id => "grey",:name => "groupColorShirt"},"grey"%>
+                                        <label for="grey"></label>
+                                    </p>
+                                </div>
+                                <div class="col l1 m1 s1 choose-color-11">
+                                    <p>
+                                        <%= se.check_box :color,{:id => "pink",:name => "groupColorShirt"},"pink"%>
+                                        <label for="pink"></label>
+                                    </p>
+                                </div>
+                                <div class="col l1 m1 s1 choose-color-12">
+                                    <p>
+                                         <%= se.check_box :color,{:id => "brown",:name => "groupColorShirt"},"brown"%>
+                                        <label for="brown"></label>
+                                    </p>
+                                </div>
+                                <div class="col l1 m1 s1 choose-color-13">
+                                    <p>
+                                         <%= se.check_box :color,{:id => "violet",:name => "groupColorShirt"},"violet"%>
+                                        <label for="violet"></label>
+                                    </p>
+                                </div>
+                                <div class="col l1 m1 s1 choose-color-14">
+                                    <p>
+                                         <%= se.check_box :color,{:id => "deepskyblue",:name => "groupColorShirt"},"deepskyblue"%>
+                                        <label for="deepskyblue"></label>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+			<%= f.fields_for :shirt,Shirt.new do |s| %>
+                        <div class="col l3 m3 vertical-align">
+                            <div class="row no-margin-bottom">
+                                <div class="col l6 l6 s6"><p>HOMBRE</p></div>
+                                <div class="col l6 s6">
+                                    <p>
+                                         <%= s.check_box :type,{:id => "hombre",:name => "groupType"},"hombre"%>
+                                        <label for="hombre"></label>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row no-margin-bottom">
+                                <div class="col l6 s6"><p>MUJER</p></div>
+                                <div class="col l6 s6"><p>
+                                         <%= s.check_box :type,{:id => "mujer",:name => "groupType"},"mujer"%>
+                                       <label for="mujer"></label>
+                                </p></div>
+                            </div>
+                            <div class="row no-margin-bottom">
+                                <div class="col l6 s6"><p>NIÑO</p></div>
+                                <div class="col l6 s6"><p>
+                                      <%= s.check_box :type,{:id => "niño",:name => "groupType"},"niño"%>
+                                    <label for="niño"></label>
+                                </p></div>
+                            </div>
+                        </div>
+                        <div class="col l3 m3">
+                            <div class="row no-margin-bottom">
+                                <div class="col l12 m12 s12"><p>SU IMAGEN</p></div>
+                            </div>
+                            <div class="row">
+                                <div class="col l12 m12 s12">
+                                    <div class="div-image"></div>
+                                </div>
+                            </div>
+                        </div>
+		
+                        <div class="col l3 m3 vertical-align-button">
+                            <div class="file-field input-field">
+                          	<div>Subir archivo<%= file_field(:upload, :image, accept: 'image/png,image/gif,image/jpeg', :class => "btn btn-upload-file")%>
+					</div>
+				
+                                
+                            </div>
+                        </div>
+                    </div>
+			
+                    <div class="prev-down">
+                        <div class="row">
+                            <div class="col l2 m2 s2 offset-l1">
+                                <p>S</p>
+                                <p>
+                                    <%= s.check_box :size,{:id => "s",:name => "groupSize"},"s"%>
+                                    <label for="s"></label>
+                                </p>
+                            </div>
+                            <div class="col l2 m2 s2">
+                                <p>M</p>
+                                <p>
+                                    <%= s.check_box :size,{:id => "m",:name => "groupSize"},"m"%>
+                                    <label for="m"></label>
+                                </p>
+                            </div>
+                            <div class="col l2 m2 s2">
+                                <p>L</p>
+                                <p>
+                                    <%= s.check_box :size,{:id => "l",:name => "groupSize"},"l"%>
+                                    <label for="l"></label>
+                                </p>
+                            </div>
+				
+                            <div class="col l2 m2 s2">
+                                <p>XL</p>
+                                <p>
+                                    <%= s.check_box :size,{:id => "xl",:name => "groupSize"},"xl"%>
+                                    <label for="xl"></label>
+                                </p>
+                            </div>
+                            <div class="col l2 m2 s2">
+                                <p>XLL</p>
+                                <p>
+                                    <%= s.check_box :size,{:id => "xxl",:name => "groupSize"},"xxl"%>
+                                    <label for="xxl"></label>
+                                </p>
+                            </div>
+                        </div>
+			<%end%>
+                        <div class="row no-margin-bottom">
+                            <div class="col l3">
+                                <p>FRENTE</p>
+                                <div class="shirt-image-front zoom">
+                                <canvas id="canvas-front" ></canvas>
+
+                                </div>
+                            </div>
+                            <div class="col l3">
+                                <p>TRASERA</p>
+                                <div class="shirt-image-back zoom">
+                                <canvas id="canvas-back"></canvas>
+                                </div>
+                            </div>
+                            <div class="col l6">
+                                <p class="location-text frente-with-line">FRENTE</p>
+                                <hr>
+                                <p>
+                                    <%= se.check_box :place,{:id => "frente",:checked => "true"},"front"%>
+                                    <label for="frente"></label>
+                                </p>
+                            </div>
+                            <div class="col l6">
+                                <p class="location-text frente-with-line">TRASERA</p>
+                                <hr>
+                                <p>
+                                    <%= se.check_box :place,{:id => "trasera",:checked => "true"},"back"%>
+                                    <label for="trasera"></label>
+                                </p>
+                            </div>
+                            <div class="col l6">
+                                <div class="image-data-div"><p class="location-text">DATOS DE LA IMAGEN</p></div>
+                                <div class="row no-margin-bottom">
+                                    <div class="input-field col l6 s6">
+                                        <%= se.text_field :width,{:id => "ancho",:class => "validate"}%>
+                                        <label for="ancho">ANCHO(EN CM)</label>
+                                    </div>
+                                    <div class="input-field col l6 s6">
+                                        <%= se.text_field :heigth,{:id => "alto",:class => "validate"}%>
+                                        <label for="alto">ALTO(EN CM)</label>
+                                    </div>
+                                </div>
+                                <div class="row no-margin-bottom">
+                                    <div class="col l2 s2">
+                                        <p>COLOR:</p>
+                                    </div>
+                                    <div class="col l2 s2">
+                                        <p>
+                                            <%= se.check_box :number_of_colors,{:id => "1-color",:name => "groupColorNumb"},"1-color"%>
+                                            <label for="1-color"></label>
+                                        </p>
+                                        <p>1</p>
+                                    </div>
+                                    <div class="col l2 s2">
+                                        <p>
+                                            <%= se.check_box :number_of_colors,{:id => "2-color",:name => "groupColorNumb"},"2-color"%>
+                                            <label for="2-color"></label>
+                                        </p>
+                                        <p>2</p>
+                                    </div>
+                                    <div class="col l2 s2">
+                                        <p>
+                                            <%= se.check_box :number_of_colors,{:id => "3-color",:name => "groupColorNumb"},"3-color"%>
+                                            <label for="3-color"></label>
+                                        </p>
+                                        <p>3</p>
+                                    </div>
+                                    <div class="col l2 s2">
+                                        <p>
+                                            <%= se.check_box :number_of_colors,{:id => "4-color",:name => "groupColorNumb"},"4-color"%>
+                                            <label for="4-color"></label>
+                                        </p>
+                                        <p>4</p>
+                                    </div>
+                                    <div class="col l2 s2">
+                                        <p>
+                                            <%= se.check_box :number_of_colors,{:id => "5-color",:name => "groupColorNumb"},"5-color"%>
+                                            <label for="5-color"></label>
+                                        </p>
+                                        <p>+ de 4</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col l4 s4">
+                                <p>OBSERVACIONES</p>
+				<%= se.text_area :observations,{:cols => "30",:rows => "10"}%>
+                                
+                            </div>
+                            <div class="col l4 s4">
+                                <div class="input-field">
+                                    <%= se.text_field :amount,{:id => "cantidad",:class => "validate"}%>
+                                    <label for="cantidad">CANTIDAD</label>
+                                </div>
+                            </div>
+                            <div class="col l4 s4 done-button">
+                                <a href="cart.html" class="btn">SUBIR A CARRITO</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+		<!--</form>-->
+		<% end %>
+            <% end %>
+            <div class="col l3 m3 offset-l1 serigraphy-text-container hide-on-small-and-down">
+                <div class="serigraphy-title-wrapper"><p class="serigraphy-title-1">Serigrafía</p></div>
+                <div class="serigraphy-title-wrapper-1"><p class="serigraphy-title-2">Siskos</p></div>
+                <div class="serigraphy-subtitle"><p>serigrafía</p></div>
+                <div class="serigraphy-text"><p style="text-align: center">Adaptación de su diseño para poder ser impreso sobre prendas
+                    textiles o
+                    cualquier otra superficie plana. Blanco, negro y/o color. Diferentes tipos de tintas</p></div>
+            </div>
+            <!--Fin pantallas medias o superiores-->
+
+            <!--En pantallas pequeñas o inferiores-->
+            <div class="col l4 m4 s12 serigraphy-text-container hide-on-med-and-up">
+                <div class="serigraphy-title-wrapper"><p class="serigraphy-title-1">Serigrafía</p></div>
+                <div class="serigraphy-title-wrapper-1"><p class="serigraphy-title-2">Siskos</p></div>
+                <div class="serigraphy-subtitle"><p>serigrafía</p></div>
+                <div class="serigraphy-text"><p>Adaptación de su diseño para poder ser impreso sobre prendas textiles o
+                    cualquier otra superficie plana. Blanco, negro y/o color. Diferentes tipos de tintas</p></div>
+            </div>
+            <div class="col l8 m8 s12 serigraphy-prev-small hide-on-med-and-up">
+                <a class="waves-effect waves-light btn yellow">Personalice su diseño</a>
+            </div>
+            <!--Fin pantallas pequeñas o inferiores-->
+        </div>
+    </div>
+</section>
+
+<!--Footer-->
+<section>
+	<%= render "footer" %>
+</section>
+
+<!--Fin footer-->
+
+<script type="text/javascript" src="assets/jquery.min.js"></script>
+<script type="text/javascript" src="assets/materialize.min.js"></script>
+<script type="text/javascript" src="assets/script_serigraphy.js"></script>
+<script type="text/javascript" src="assets/fabric.js"></script>
+

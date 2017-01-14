@@ -1,0 +1,97 @@
+<!--Preloader -->
+<div class="preloader-background">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo"><img class="siskos-logo" src="/assets/siskos.png"></a>
+            <ul id="items-menu" class="right ">
+                <li class="waves-effect waves-teal btn">
+                    <div class="div-option"><img class="icono-silueta" src="/assets/index/silueta.png"></div>
+                    <p>Servicio</p>
+                    <ul id="dropdown3" >
+                        <li><a href="serigraphy">Serigrafía</a></li>
+                        <li><a>Sublimación</a></li>
+                        <li><a>Impr.Digital</a></li>
+                        <li><a>Tampografía</a></li>
+                        <li><a>Bordados</a></li><br>
+                        <li><a>Laser</a></li>
+                    </ul>
+                </li>
+                <% if session[:client_id].nil? %>
+                	<li id="register" class="waves-effect waves-teal btn">
+                    	<div class="div-option"><img class="icono-silueta" src="/assets/index/silueta.png"></div>
+                   	<%= link_to 'sign_up' do %>
+			<p>Crear cuenta </p><br>
+			<%end%>
+				
+         
+                	</li>
+                	<li id="login" class="waves-effect waves-light btn">
+                    	<div class="div-option"><img class="icono-silueta" src="/assets/index/silueta.png"></div>
+			<%= link_to 'login' do %>                    	
+			<p>Login</p><br>
+                    	
+			<%end%>			
+                   	</li>
+		
+		
+		<% else %>
+		<li  class="waves-effect waves-teal btn" style="min-width: 180px;height:36px;">
+                        <div class="div-option"><img class="icono-silueta" src="/assets/index/silueta.png"></div>
+                <%= button_to :action => 'destroy', :controller => 'index' do %>                        
+                <p>CERRAR </p><br>
+        
+            <%end%> 
+        </li>   
+		<%end%>
+
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<section id="cart-content" class="row">
+    <h2 id="title-cart">Cesta</h2>
+    <div class="row">
+        <ul id="cart-products" class="col s8">
+                <%= form_for @cart, url: {action: "download_cart"} do |f| %>
+                    <%= f.button :class=>'btn' do %>
+                                    SUBIR A CARRITO
+                    <%end%>
+                <%end%>
+        </ul>
+        <div id="subtotal-cart" class="col s4">
+            <h2 >Subtotal</h2>
+            <div id="panel-subtotal" class="col s6" >
+                <p id="total-products"></p>
+                <p id="total"></p>
+                <span id="impuestos" class="row col s12 center-align">( 7% IGIC incluido )</span>
+                <button id="btn-enviar" class="btn hvr-grow-shadow">Enviar pedido</button>
+            </div>
+
+        </div>
+    </div>
+
+
+</section>
+<section>
+    
+	<%= render 'footer' %>
+</section>
+<script src="/assets/jquery.min.js"></script>
+<script src="/assets/script_index.js"></script>

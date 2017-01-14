@@ -1,0 +1,21 @@
+<li id="register" class="waves-effect waves-teal ">
+<div class="div-option"><img class="icono-silueta" src="/assets/index/silueta.png"></div>
+<p>Crear cuenta</p><br>
+<ul id="dropdown1" >
+				<%= form_for(:client, :url => {:controller => 'signs_up', :action => 'create'}) do |f| %>
+					<%= f.text_field :name, :placeholder => "Nombre", :id => "nombre"%>
+					<%= f.text_field :surname, :placeholder => "Apellidos", :id => "apellidos"%>
+					<%= f.email_field :email, :placeholder => "Correo", :id => "correo-registro"%>
+					<%= f.text_field :address, :placeholder => "Dirección", :id => "direccion"%>
+					<%= f.password_field :password, :placeholder => "Contraseña", :id => "password-registro"%>
+					<%= f.button :Registrar, :type => "submit", :id => "button-register", :class => "btn center-align"%>
+				<% end %>
+</ul>
+		<% if @client.errors.any? %>
+			<ul class="Signup_Errors">
+					<% for message_error in @client.errors.full_messages %>
+					<li>* <%= message_error %></li>
+					<% end %>
+			</ul>
+		<% end %>
+</li>

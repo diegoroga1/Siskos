@@ -1,0 +1,2 @@
+class RenamePasswordToHashedPassword < ApplicationRecord
+end

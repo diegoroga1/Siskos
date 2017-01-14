@@ -1,0 +1,15 @@
+<li id="login" class="waves-effect waves-light ">
+    	<div class="div-option"><img class="icono-silueta" src="/assets/index/silueta.png"></div>
+    	<p>Login</p><br>
+    	<ul id="dropdown2" >
+		<%= form_for(:client, :url => {:controller => 'logins', :action => 'create_session'}) do |f| %>
+			<%= f.email_field :email, :placeholder => "Correo", :id => "correo-registro"%>
+			<%= f.password_field :password, :placeholder => "Contraseña", :id => "password-registro"%>
+			<%= f.button :Entrar, :type => "submit", :id => "button-register", :class => "btn center-align"%>
+		<% end %>		
+    	</ul>
+	<% if flash[:notice] %>
+			<%= flash[:notice] %>
+	<% end %>>
+	
+	</li>

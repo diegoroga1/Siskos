@@ -1,0 +1,26 @@
+class LoginsController < ApplicationController
+
+	def logins
+		session[:url]=request.referrer
+		flash[:notice] = nil
+	end	
+	
+	def create_session
+		@client = Client.authenticate(params[:client][:email],params[:client][:password])
+		if @client
+			session[:client_id]=@client.id
+			redirect_to session[:url]
+		else
+			flash[:notice] = "Contraseña o correo inválidos "
+			render action: :logins
+		end
+	end
+	private
+			def set_client
+				@client = current_client
+			end
+			def client_params
+	    		params.require(:client).permit(:email, :password)
+	  		end
+
+end

@@ -1,0 +1,452 @@
+$serigraphy: #fecc00;
+$upload_file: #5c201f;
+$count: 0;
+$colors: (purple, 1) (blue, 2) (yellow, 3) (orange, 4) (red, 5) (green, 6) (aqua, 7) (black, 8) (white, 9) (grey, 10) (pink, 11) (brown, 12) (violet, 13) (deepskyblue, 14);
+
+@mixin bcolor($color) {
+  background-color: $color !important;
+}
+
+@font-face {
+  font-family: siskos;
+  src: url("../fonts/Candara.ttf");
+}
+
+/*------------------Preloader------------------*/
+
+.preloader-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eee;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/*------------------Barra de navegación------------------*/
+
+nav {
+  @include bcolor($serigraphy);
+  height: 70px !important;
+}
+
+#items-menu{
+  position: absolute;
+  right: 0;
+}
+#login{
+  width: 180px !important;
+}
+
+.nav-wrapper{
+
+  ul{
+    li{
+      border-radius: 5px !important;
+      @include bcolor(#ffffff);
+      color: $serigraphy;
+      margin-top: 15px;
+      margin-right: 20px;
+      width: auto;
+      max-width: 250px;
+
+      a{
+        color: $serigraphy;
+        float: left;
+        &:hover{
+          @include bcolor(white);
+        }
+      }
+      p{
+        margin: 0;
+        float: inherit;
+      }
+      &:hover{
+        @include bcolor(white);
+        height: 100%;
+
+      }
+
+      #dropdown1 , #dropdown2{
+        @include bcolor(white);
+        z-index: 10;
+        -webkit-transition:height 1s ease;
+        -moz-transition:height 1s ease;
+        -o-transition:height 1s ease;
+        transition:height  1s ease;
+        input{
+          border: 1px $serigraphy solid;
+          border-radius:4px;
+          margin: 1px 0px;
+        }
+        button{
+          @include bcolor($serigraphy);
+          color: white;
+          margin-bottom: 8px;
+        }
+      }
+    }
+  }
+}
+
+#dropdown3{
+  margin-top: 40px;
+  li {
+    float: left;
+    width: 100%;
+    border: 1px $serigraphy solid;
+    border-radius: 0px !important;
+    margin-bottom: 10px;
+    
+    a{
+      color: $serigraphy;
+      width: 100%;
+      &:hover{
+        color:white;
+        @include bcolor($serigraphy);
+
+      }
+    }
+
+  }
+
+}
+
+.siskos-logo {
+  height: 60px;
+  margin-left: 70px;
+}
+
+.nav-wrapper {
+  ul {
+    li {
+      border-radius: 5px !important;
+      @include bcolor(#ffffff);
+      color: $serigraphy;
+      margin-top: 15px;
+      margin-right: 20px;
+      p {
+        margin: 0;
+        float: inherit;
+      }
+    }
+  }
+}
+
+.div-option {
+  height: 36px;
+  width: 36px;
+  margin-right: 0px;
+  float: left;
+}
+
+.icono-silueta {
+  height: 20px;
+  margin-top: 6px;
+}
+
+/*------------------Body------------------*/
+
+.myContainer {
+  background: url("/assets/serigraphy/serigrafia.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.close-button{
+  margin-top: 5px;
+  border-radius: 20px;
+  position: inherit !important;
+}
+
+.serigraphy-text-container {
+  background-color: rgba(255, 255, 255, 0.6);
+  position: absolute;
+  right: 0 !important;
+  padding-bottom: 20px;
+  p {
+    font-family: "siskos";
+    margin: 0;
+  }
+}
+
+.serigraphy-subtitle {
+  width: 100%;
+  background-color: $serigraphy;
+  border-radius: 20px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 20px;
+  margin-top: -45px;
+}
+
+.serigraphy-title-wrapper-1 {
+  margin-top: -40px;
+}
+
+.serigraphy-title-1 {
+  font-size: 2em;
+}
+
+.serigraphy-title-2 {
+  font-size: 7em;
+}
+
+.serigraphy-text {
+  font-size: 2em;
+  margin-top: 15px;
+}
+
+/*------------------Previsualizador------------------*/
+
+.serigraphy-prev-med-and-up {
+  margin-top: 20px;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  @include bcolor(rgba(254, 204, 0, 0.5));
+  border-radius: 20px;
+  a {
+    position: absolute;
+    bottom: 0;
+    border-radius: 20px !important;
+  }
+  p {
+    color: #ffffff;
+    font-size: 2em;
+    font-family: siskos;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .btn {
+    @include bcolor($serigraphy);
+  }
+}
+
+.prev-up {
+  @include bcolor($serigraphy);
+  padding-top: 6px;
+  border-radius: 10px;
+  .btn {
+    @include bcolor($upload_file);
+    border-radius: 2px !important;
+  }
+  a {
+    position: inherit;
+  }
+  p {
+    font-size: 1em;
+    font-family: siskos;
+    margin-top: 0;
+    color: $upload_file;
+  }
+}
+
+.prev-down {
+  @include bcolor($serigraphy);
+  border-radius: 10px;
+  p {
+    color: $upload_file;
+    font-size: 1em;
+  }
+}
+
+.shirt {
+  width: 100%;
+}
+
+.location-text {
+  font-size: 2em !important;
+}
+
+.vertical-align {
+  margin-top: 2%;
+}
+
+.vertical-align-button {
+  margin-top: 3%;
+}
+
+.div-image {
+  background-image: url('');
+  background-size: cover;
+  background-position: center;
+  background-color: #ffffff;
+  border-radius: 2px;
+  height: 90px;
+  width: 100%;
+}
+
+@each $color, $number in $colors {
+  .choose-color-#{$number} {
+    [type="checkbox"] + label:before {
+      @include bcolor($color);
+    }
+
+    [type="checkbox"]:checked + label:before {
+      @include bcolor(rgba(0, 0, 0, 0));
+      border-right: 2px solid #ffffff !important;
+      border-bottom: 2px solid #ffffff !important;
+    }
+  }
+}
+
+.frente-with-line{
+  display: inline-block;
+}
+
+hr{
+  display: none;
+}
+
+.custom-button-div{
+  min-height: 700px;
+}
+.custom-button{
+  @include bcolor($serigraphy);
+  color: #ffffff;
+  border-radius: 20px;
+  margin-top: 60%;
+}
+
+.prev-colors {
+  margin-bottom: 2px !important;
+}
+
+[type="checkbox"] + label:before {
+  @include bcolor(#ffffff);
+}
+
+[type="checkbox"]:checked + label:before {
+  @include bcolor(rgba(0, 0, 0, 0));
+  border-right: 2px solid #ffffff !important;
+  border-bottom: 2px solid #ffffff !important;
+}
+
+.image-data-div {
+  border-bottom: solid 1px $upload_file;
+  p {
+    text-align: center;
+  }
+}
+
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+
+.button_to{
+  min-width: 150px;height:36px;
+  button[type="submit"]{
+    background-color:white;
+    border:none;
+    &:hover{
+      background-color:white;
+    }
+  }
+}
+.done-button {
+  .btn {
+    @include bcolor($upload_file);
+    border-radius: 2px !important;
+    position: relative;
+    margin-top: 5%;
+  }
+}
+
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: $upload_file !important;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid $upload_file !important;
+  box-shadow: 0 1px 0 0 $upload_file !important;
+}
+
+textarea{
+  @include bcolor(#ffffff);
+  resize: none;
+}
+
+.serigraphy-prev-small {
+  a {
+    bottom: 0;
+    border-radius: 20px !important;
+  }
+  .btn {
+    @include bcolor($serigraphy);
+  }
+}
+
+.shirt-image-front{
+  background: url("/assets/serigraphy/frontal.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+.shirt-image-back{
+  background: url("/assets/serigraphy/trasera.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+/*------------------Footer------------------*/
+
+footer{
+  margin-top: 0 !important;
+  @include bcolor($serigraphy);
+  height: 100%;
+  box-sizing: border-box;
+  .container{
+
+    li{
+      text-align: center;
+      cursor:pointer;
+      img{
+        width: 32px;
+
+      }
+    }
+  }
+  border-top:2px solid white;
+  color: white;
+  width: 100%;
+}
+
+.line-white {
+  background-color: white;
+  height: 1px;
+}
+
+canvas{
+  width: 200px;
+  height: 200px;
+}
+.zoom{
+  /* Aumentamos la anchura y altura durante 2 segundos */
+  transition: width 2s, height 2s, transform 2s;
+  -moz-transition: width 2s, height 2s, -moz-transform 2s;
+  -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+  -o-transition: width 2s, height 2s,-o-transform 2s;
+}
+.zoom:hover{
+  /* tranformamos el elemento al pasar el mouse por encima al doble de
+     su tamaño con scale(2). */
+  transform : scale(2);
+  -moz-transform : scale(2);      /* Firefox */
+  -webkit-transform : scale(2);   /* Chrome - Safari */
+  -o-transform : scale(2);        /* Opera */
+}

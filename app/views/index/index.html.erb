@@ -1,0 +1,89 @@
+<!--Preloader -->
+<div class="preloader-background">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div
+
+<header>
+    <nav>
+        <div class="nav-wrapper">
+            <a class="brand-logo"><img class="siskos-logo" src="/assets/siskos.png"></a>
+            <ul id="items-menu" class="right ">
+		<% if session[:client_id].nil? %>
+                	<li id="register" class="waves-effect waves-teal btn">
+                    	<div class="div-option"><img class="icono-silueta" src="/assets/index/silueta.png"></div>
+                   	<%= link_to 'sign_up' do %>
+			<p>Crear cuenta </p><br>
+			<%end%>
+				
+         
+                	</li>
+                	<li id="login" class="waves-effect waves-light btn">
+                    	<div class="div-option"><img class="icono-silueta" src="/assets/index/silueta.png"></div>
+			<%= link_to 'login'  do %>                    	
+			<p>Login</p><br>
+                    	
+			<%end%>			
+                   	</li>
+		
+		
+		<% else %>
+		<li  class="waves-effect waves-teal btn" style="min-width: 180px;height:36px;">
+                        <div class="div-option"><img class="icono-silueta" src="/assets/index/silueta.png"></div>
+                <%= button_to :action => 'destroy', :controller => 'index' do %>                        
+                <p>CERRAR </p><br>
+        
+            <%end%> 
+        </li>   
+		<%end%>
+		
+                <li class="waves-effect waves-light btn">
+                    <div class="div-option"><img class="icono-silueta" src="/assets/index/cart.png"></div>
+                    <a href="cart"><p>Carrito</p></a>
+				</li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<section id="content" class="row">
+
+    <div id="panel-servicios" class="row center-align">
+        <ul class="row">
+            <li class="col s2 offset-s3 circle">
+	    	<%= link_to 'serigraphy' do %>
+				<p>Serigrafía <br><img src="/assets/index/icon%20camiseta.png" alt=""></p>
+	   		<% end %>
+            </li>
+            <li class="col s2"><a href="#"><p>Sublimación <br> <img src="/assets/index/icon%20impresora.png" alt=""></p></a></li>
+            <li class="col s2"><a href="#"><p>Imp.Digital <br><img src="/assets/index/icon%20impresora%201.png" alt=""></p></a></li>
+        </ul>
+        <ul class="row">
+            <li class="col s2 offset-s3 "><a href="#"><p>Tampografía <br><img src="/assets/index/icon%20tampo.png" alt=""></p></a></li>
+            <li class="col s2"><a href="#"><p>Bordados <br><img src="/assets/index/icon%20bordado.png" alt=""></p></a></li>
+            <li class="col s2"><a href="#"><p>Laser <br><img src="/assets/index/icon%20laser.png" alt=""></p></a></li>
+        </ul>
+    </div>
+    <%= link_to 'promotions' do %>	
+    	<div id="panel-promociones" class="row col s4 offset-s4 ">
+        	<h2>PROMOCIONES</h2>
+        	<p><img src="/assets/index/camisaverde.png" alt="">Informese sobre nuestras promociones y ofertas</p>
+    	</div>
+    <% end %>
+</section>
+<section>
+    <%= render "footer" %>
+</section>
+<script src="/assets/jquery.min.js"></script>
+<script src="/assets/materialize.min.js"></script>
+<script src="/assets/script_index.js"></script>

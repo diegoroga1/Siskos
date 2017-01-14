@@ -1,0 +1,69 @@
+<header>
+    <nav>
+        <div class="nav-wrapper">
+        	
+            <a href="/" class="brand-logo"><img class="siskos-logo" src="/assets/siskos.png"></a>
+            
+            <ul id="items-menu" class="right ">
+		<% if session[:client_id].nil? %>
+                	<li id="register" class="waves-effect waves-teal btn">
+                    	<div class="div-option"><img class="icono-silueta" src="/assets/index/silueta.png"></div>
+                   	<%= link_to 'sign_up' do %>
+			<p>Crear cuenta </p><br>
+			<%end%>
+
+                	</li>
+
+		
+		<% else %>
+		<li  class="waves-effect waves-teal btn">
+                    	<div class="div-option"><img class="icono-silueta" src="/assets/index/silueta.png"></div>
+         		<%= button_to :action => 'destroy' do %>                    	
+				<p>Cerrar </p><br>
+                    		<%flash.each do |name,msg| -%>
+					<%= content_tag :div,msg, class: name%>
+				<%end-%>
+			<%end%>	
+		</li>	
+		<%end%>
+		
+                <li class="waves-effect waves-light btn">
+                    <div class="div-option"><img class="icono-silueta" src="/assets/index/cart.png"></div>
+                    <a href="cart"><p>Carrito</p></a>
+				</li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+<section>
+	<li id="login" class="waves-effect waves-light ">
+    	
+    	<p>Login</p><br>
+    	<ul id="dropdown2" >
+		<%= form_for(:client, :url => {:controller => 'logins', :action => 'create_session'}) do |f| %>
+			<%= f.email_field :email, :placeholder => "Correo", :id => "correo-registro"%>
+			<%= f.password_field :password, :placeholder => "Contraseña", :id => "password-registro"%>
+			<br>
+			<% if @client.nil? %>
+				<li style="color:red;"><%= flash[:notice] %></li>
+			<% end %>
+			<%= f.button :Entrar, :type => "submit", :id => "button-register", :class => "btn center-align"%>
+		<% end %>		
+    	</ul>
+	
+	
+	</li>
+</section>
+<!--Footer-->
+<section>
+	<%= render "footer" %>
+</section>
+
+<!--Fin footer-->
+<script src="/assets/jquery.min.js"></script>
+<script src="/assets/materialize.min.js"></script>
+<script src="/assets/script_promotions.js"></script>
+
+<script src="/assets/materialize.min.js"></script>

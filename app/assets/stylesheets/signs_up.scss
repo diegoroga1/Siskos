@@ -1,0 +1,55 @@
+// Place all the styles related to the signs_up controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$azulS:#04c5da;
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}  
+}
+#register{
+	width:100%;
+	cursor:default;
+	p{
+		text-align:center;
+		background-color:$azulS;
+		color:white;
+		font-size:25px;
+		margin: 10px 500px;
+		border-radius: 20px;
+
+	}
+	ul{
+
+		input{
+			width:60%;
+			background-color:rgba(0,0,0,0.2);
+			
+		}
+		text-align:center;
+		width:100%;
+	}
+}
+@include placeholder {
+    font-style:italic;
+    color: black;
+    font-weight:100;
+
+}	
+ .ui-tooltip, .arrow:after {
+	background: white;
+	border: 2px solid white;
+	z-index:9999;
+	width:500px;
+
+}
+.ui-tooltip {
+	padding: 10px 20px;
+	color: #26A69A;
+	border-radius: 20px;
+	font: bold 14px "Helvetica Neue", Sans-Serif;
+	text-transform: uppercase;
+	box-shadow: 0 0 7px black;
+	left:500px;
+}

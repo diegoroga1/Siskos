@@ -1,0 +1,17 @@
+class CreateSerigraphies < ActiveRecord::Migration[5.0]
+  def change
+    create_table :serigraphies do |t|
+      t.string :color
+      t.integer :number_of_colors
+      t.text :observations
+      t.integer :width
+      t.integer :heigth
+      t.binary :image
+      t.string :place
+      t.decimal :prize
+      t.timestamps
+
+    end
+
+  end
+end

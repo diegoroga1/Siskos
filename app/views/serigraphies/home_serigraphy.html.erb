@@ -1,0 +1,386 @@
+<!--Preloader -->
+
+
+<div class="preloader-background">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Barra de navegación-->
+<header>
+    <nav>
+        <div class="nav-wrapper">
+            <div class="row">
+                <div class="col l3 m3 s3">
+                    <a href="/" class="brand-logo">
+			<img class="siskos-logo" src="/assets/siskos.png">
+		    </a>
+                </div>
+                <div class="col l9 m9 s9">
+                    <ul id="items-menu" class="right">
+                        <li class="waves-effect waves-yellow btn" style="min-width:180px; width: 40%; margin-left: 160px; !important;">
+                            <div class="div-option">
+				<img class="icono-silueta" src="/assets/serigraphy/silueta.png"></div>
+                            <p>Servicio</p>
+                            <ul id="dropdown3">
+                                        
+                                <li><a href="/">Principal</a></li>
+                                <li><a>Sublimación</a></li>
+                                <li><a>Impr.Digital</a></li>
+                                <li><a>Tampografía</a></li>
+                                <li><a>Bordados</a></li>
+                                <br>
+                                <li><a>Laser</a></li>
+                            </ul>
+                        </li>
+                        <% if session[:client_id].nil? %>
+                	<li id="register" class="waves-effect waves-teal btn">
+                    	<div class="div-option"><img class="icono-silueta" src="/assets/serigraphy/silueta.png"></div>
+                   	<%= link_to 'sign_up' do %>
+			<p>Crear cuenta </p><br>
+			<%end%>
+				
+         
+                	</li>
+                	<li id="login" class="waves-effect waves-light btn">
+                    	<div class="div-option"><img class="icono-silueta" src="/assets/serigraphy/silueta.png"></div>
+			<%= link_to 'login' do %>                    	
+			<p>Login</p><br>
+                    	
+			<%end%>			
+                   	</li>
+		
+		
+		<% else %>
+		<li  class="waves-effect waves-teal btn" style="min-width: 180px;height:36px;">
+                    	<div class="div-option"><img class="icono-silueta" src="/assets/serigraphy/silueta.png"></div>
+         		<%= button_to :action => 'destroy', :controller => 'index' do %>                    	
+				<p>CERRAR </p><br>
+		
+			<%end%>	
+		</li>	
+		<%end%>
+                        <li class="waves-effect waves-yellow btn">
+                            <div class="div-option"><img class="icono-silueta" src="/assets/serigraphy/cart.png"></div>
+                            <a href="cart"><p>Carrito</p></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--Fin barra de navegación-->
+<section id="content">
+    <div class="myContainer">
+        <div class="row" style="min-height: 600px">
+            <!--En pantallas medias o superiores-->
+            <%= form_for @product, url: {action: "upload_to_cart"} do |f| %>
+
+                <%= f.fields_for :shirt,Shirt.new do |s| %>
+                
+            <!--<form action="#">-->
+                
+                <div class="col l8 m8 custom-button-div">
+                    <a href="#" class="waves-effect waves-light custom-button btn hvr-forward">PERSONALICE SU DISEÑO</a>
+                </div>
+                <div class="col l7 m7 offset-l1 serigraphy-prev-med-and-up hide-on-small-and-down">
+                    <a class="close-button btn">X</a>
+                    <p>Previsualizador</p>
+                    <div class="row prev-up">
+                        <div class="col l3 m3 vertical-align">
+                            <p class="prev-colors">COLOR CAMISETA</p>
+                            <div class="row prev-colors">
+                                <div class="col l2 m2 s2 choose-color-1">
+                                    <p>
+                                        <%= radio_button :shirt,:color,:white,:checked=>true,:class =>'with-gap'%>
+                                        <label for="shirt_color_white">Blanco</label>
+                                        
+                                    </p>
+                                    <p>
+					               
+                                    <%= radio_button :shirt,:color,:purple ,:class =>'with-gap'%>
+                                        <label for="shirt_color_purple">Morado</label>
+                                    </p>
+                                
+                               
+                                    <p>
+                                        <%= radio_button :shirt,:color,:blue,:class =>'with-gap'%>
+                                        <label for="shirt_color_blue">Azul</label>
+                                    </p>
+                               
+                                    <p>
+                                        <%= radio_button :shirt,:color,:yellow,:class =>'with-gap'%>
+                                        <label for="shirt_color_yellow">Amarillo</label>
+                                    </p>
+                                
+                                    <p>
+					               <%= radio_button :shirt,:color,:orange,:class =>'with-gap'%>
+                                        <label for="shirt_color_orange">Naranja</label>
+                                    </p>
+                                
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+			
+                        <div class="col l3 m3 vertical-align">
+                            <div class="row no-margin-bottom">
+                                
+                                <div class="col l6 s6">
+                                    <p>
+                                        
+                                        <%= radio_button :shirt,:shirt_type,:hombre,:checked=> true,:class =>'with-gap'%>
+                                        <label for="shirt_shirt_type_hombre">Hombre</label>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row no-margin-bottom">
+                                
+                                <div class="col l6 s6"><p>
+                                         
+                                        <%= radio_button :shirt,:shirt_type,:mujer,:class =>'with-gap'%>
+                                        <label for="shirt_shirt_type_mujer">Mujer</label>
+                                </p></div>
+                            </div>
+                            <div class="row no-margin-bottom">
+                              
+                                <div class="col l6 s6"><p>
+                                       <%= radio_button :shirt,:shirt_type,:ninio,:class =>'with-gap'%>
+                                        <label for="shirt_shirt_type_ninio">Niño</label>
+                                </p></div>
+                            </div>
+                        </div>
+                        <div class="col l3 m3">
+                            <div class="row no-margin-bottom">
+                                <div class="col l12 m12 s12"><p>SU IMAGEN</p></div>
+                            </div>
+                            <div class="row">
+                                <div class="col l12 m12 s12">
+                                    <div class="div-image"></div>
+                                </div>
+                            </div>
+                        </div>
+		
+                        <div class="col l3 m3 vertical-align-button">
+                            <div class="file-field input-field">
+                              <div>Subir archivo<%= file_field :upload, :image,:multipart=>true, accept: 'image/png,image/gif,image/jpeg', :class => "btn btn-upload-file imagecanvas"%>
+                                
+                                <div style="display:none;"><%= f.text_area :image_json,:id=>"image_json"%></div>
+                    </div>
+                        
+                          	
+
+                                
+                            </div>
+                        </div>
+                    </div>
+			
+                    <div class="prev-down">
+                        <div class="row">
+                            <div class="col l2 m2 s2 offset-l1">
+                                
+                                <p>
+                                    
+                                     <%= radio_button :shirt,:size,:s,:class =>'with-gap'%>
+                                        <label for="shirt_size_s">S</label>
+                                </p>
+                            </div>
+                            <div class="col l2 m2 s2">
+                              
+                                <p>
+                                    <%= radio_button :shirt,:size,:m,:checked=>true,:class =>'with-gap'%>
+                                        <label for="shirt_size_m">M</label>
+                                </p>
+                            </div>
+                            <div class="col l2 m2 s2">
+                               
+                                <p>
+                                    <%= radio_button :shirt,:size,:l,:class =>'with-gap'%>
+                                        <label for="shirt_size_l">L</label>
+                                </p>
+                            </div>
+				
+                            <div class="col l2 m2 s2">
+                               
+                                <p>
+                                    <%= radio_button :shirt,:size,:xl,:class =>'with-gap'%>
+                                        <label for="shirt_size_xl">XL</label>
+                                </p>
+                            </div>
+                            <div class="col l2 m2 s2">
+                               
+                                <p>
+                                    <%= radio_button :shirt,:size,:xxl,:class =>'with-gap'%>
+                                        <label for="shirt_size_xxl">XXL</label>
+                                </p>
+                            </div>
+                        </div>
+		
+                        <div class="row no-margin-bottom">
+                            <div class="col l3">
+                                <p>FRENTE</p>
+                                <div class="shirt-image-front zoom">
+                                <canvas id="canvas-front" ></canvas>
+
+                                </div>
+                            </div>
+                            <div class="col l3">
+                                <p>TRASERA</p>
+                                <div class="shirt-image-back zoom">
+                                <canvas id="canvas-back"></canvas>
+                                </div>
+                            </div>
+                            
+                            
+                             <div class="col l6">
+                                <p class="location-text frente-with-line">FRENTE</p>
+                                <hr>
+                                <p>
+                                    <%= f.check_box :place_front,{:id => "frente",:checked =>true},"front"%>
+                                    <label for="frente"></label>
+                                     
+                                </p>
+                            </div>
+
+                            <div class="col l6">
+                                <p class="location-text frente-with-line">TRASERA</p>
+                                <hr>
+                                <p>
+                                    <%= f.check_box :place_back,{:id => "trasera"},"back"%>
+                                    <label for="trasera"></label>
+                                </p>
+                            </div>
+                            <div class="col l6">
+                                <div class="image-data-div"><p class="location-text">DATOS DE LA IMAGEN</p></div>
+                                <div class="row no-margin-bottom">
+                                    <div class="input-field col l6 s6">
+                                        <%= f.text_field :width,{:id => "ancho",:class => "validate"}%>
+                                        <label for="ancho">ANCHO(EN CM)</label>
+                                    </div>
+                                    <div class="input-field col l6 s6">
+                                        <%= f.text_field :heigth,{:id => "alto",:class => "validate"}%>
+                                        <label for="alto">ALTO(EN CM)</label>
+                                    </div>
+                                </div>
+                                <div class="row no-margin-bottom">
+                                    <div class="col l2 s2">
+                                        <p>COLOR:</p>
+                                    </div>
+                                    <div class="col l2 s2">
+                                        <p>
+                                            
+                                             <%= f.radio_button :number_of_colors,:uno,:checked=>true,:class =>'with-gap'%>
+                                        <label for="product_number_of_colors_uno">1</label>
+                                        </p>
+                                       
+                                    </div>
+                                    <div class="col l2 s2">
+                                        <p>
+                                            
+                                             <%= f.radio_button :number_of_colors,:dos,:class =>'with-gap'%>
+                                        <label for="product_number_of_colors_dos">2</label>
+                                        </p>
+                                       
+                                    </div>
+                                    <div class="col l2 s2">
+                                        <p>
+                                             <%= f.radio_button :number_of_colors,:tres,:class =>'with-gap'%>
+                                        <label for="product_number_of_colors_tres">3</label>
+                                        </p>
+                                        
+                                    </div>
+                                    <div class="col l2 s2">
+                                        <p>
+                                             <%= f.radio_button :number_of_colors,:cuatro,:class =>'with-gap'%>
+                                        <label for="product_number_of_colors_cuatro">4</label>
+                                        </p>
+                                        
+                                    </div>
+                                    <div class="col l2 s2">
+                                        <p>
+                                             <%= f.radio_button :number_of_colors,:cinco,:class =>'with-gap'%>
+                                        <label for="product_number_of_colors_cinco">+ de 4</label>
+                                        </p>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col l4 s4">
+                                <p>OBSERVACIONES</p>
+				<%= f.text_area :observations,{:cols => "30",:rows => "10"}%>
+                                
+                            </div>
+                            <div class="col l4 s4">
+                                <div class="input-field">
+                                    <%= f.text_field :amount,{:id => "cantidad",:class => "validate"}%>
+                                    <label for="cantidad">CANTIDAD</label>
+                                    <% for message_error in @product.errors[:amount] %>
+                    <a style="color:red;">* <%= message_error %></a>
+                    <% end %>
+
+                                </div>
+                            </div>
+                            <div class="col l4 s4 done-button">
+                                <%= f.button :class=>'btn',:id=>"subir_carrito",:onclick=>"canvasToString();" do %>
+                                    SUBIR A CARRITO
+                                <%end%>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+		<!--</form>-->
+		<% end %>
+            <% end %>
+            <div class="col l3 m3 offset-l1 serigraphy-text-container hide-on-small-and-down">
+                <div class="serigraphy-title-wrapper"><p class="serigraphy-title-1">Serigrafía</p></div>
+                <div class="serigraphy-title-wrapper-1"><p class="serigraphy-title-2">Siskos</p></div>
+                <div class="serigraphy-subtitle"><p>serigrafía</p></div>
+                <div class="serigraphy-text"><p style="text-align: center">Adaptación de su diseño para poder ser impreso sobre prendas
+                    textiles o
+                    cualquier otra superficie plana. Blanco, negro y/o color. Diferentes tipos de tintas</p></div>
+            </div>
+            <!--Fin pantallas medias o superiores-->
+
+            <!--En pantallas pequeñas o inferiores-->
+            <div class="col l4 m4 s12 serigraphy-text-container hide-on-med-and-up">
+                <div class="serigraphy-title-wrapper"><p class="serigraphy-title-1">Serigrafía</p></div>
+                <div class="serigraphy-title-wrapper-1"><p class="serigraphy-title-2">Siskos</p></div>
+                <div class="serigraphy-subtitle"><p>serigrafía</p></div>
+                <div class="serigraphy-text"><p>Adaptación de su diseño para poder ser impreso sobre prendas textiles o
+                    cualquier otra superficie plana. Blanco, negro y/o color. Diferentes tipos de tintas</p></div>
+            </div>
+            <div class="col l8 m8 s12 serigraphy-prev-small hide-on-med-and-up">
+                <a class="waves-effect waves-light btn yellow">Personalice su diseño</a>
+            </div>
+            <!--Fin pantallas pequeñas o inferiores-->
+        </div>
+    </div>
+</section>
+
+<!--Footer-->
+<section>
+	<%= render "footer" %>
+</section>
+
+<!--Fin footer-->
+
+<script type="text/javascript" src="assets/jquery.min.js"></script>
+<script type="text/javascript" src="assets/materialize.min.js"></script>
+<script type="text/javascript" src="assets/script_serigraphies.js"></script>
+<script type="text/javascript" src="assets/fabric.js"></script>
+

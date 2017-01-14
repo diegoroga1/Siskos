@@ -1,0 +1,32 @@
+<footer class="page-footer">
+    <div class="container">
+        <ul id="enlaces" class="row ">
+            <li class="col s2 offset-s3">CONTACTO</li>
+            <li class="col s2">NUESTRO TRABAJO</li>
+            <li class="col s2">COMPAÑIA</li>
+        </ul>
+        <ul id="logos-social" class="row">
+            <li class="col s2 offset-s3 "><img src="/assets/index/facebook-logo.png" alt=""></li>
+            <li class="col s2 "><img src="/assets/index/youtube-logo.png" alt=""></li>
+            <li class="col s2"><img src="/assets/index/pinterest-logo.png" alt=""></li>
+        </ul>
+        <div id="phone-contact" class="row center-align">
+            <p>678555555</p>
+        </div>
+        <div id="email-contact" class="row center-align">
+            <p>siskoscorreo@gmail.com</p>
+        </div>
+        <div class="line-white row col s8 offset-s4">
+			<hr>
+		</div>
+        <div id="address-contact" class="row center-align">
+            <p>C/Pérez Nº2, Botswana</p>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container center">
+            © Siskos 2016 todos los derechos reservados
+        </div>
+    </div>
+
+</footer>

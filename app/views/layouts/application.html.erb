@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Siskos</title>
+    	<%= csrf_meta_tags %>
+
+ 
+      <%= stylesheet_link_tag    'index' if params[:controller] == 'index' || params[:controller] == 'carts'%>
+      <%= stylesheet_link_tag    'style_serigraphy' if params[:controller] == 'serigraphies' %>
+      <%= stylesheet_link_tag    'style_promotions' if params[:controller] == 'promotions' %>
+      <%= stylesheet_link_tag    'materialize.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag    'hover.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+      
+      <%= stylesheet_link_tag    'index' if params[:controller] == 'logins' || params[:controller] == 'signs_up'%>
+      <%= stylesheet_link_tag    'signs_up' if params[:controller] == 'signs_up' %>
+      <%= stylesheet_link_tag    'logins' if params[:controller] == 'logins' %>
+      
+      <%= javascript_include_tag 'jquery.min.js', 'turbolinks' if params[:controller] == 'signs_up' %>
+      <%= javascript_include_tag 'jquery-ui.min.js' if params[:controller] == 'signs_up'  %>
+      
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

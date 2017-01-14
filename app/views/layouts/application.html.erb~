@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Siskos</title>
+    	<%= csrf_meta_tags %>
+
+    	<%= stylesheet_link_tag    'index' if params[:controller] == 'index' %>
+	<%= stylesheet_link_tag    'style_serigraphy' if params[:controller] == 'serigraphies' %>
+        <%= stylesheet_link_tag    'style_promotions' if params[:controller] == 'promotions' %>
+	<%= stylesheet_link_tag    'materialize.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= stylesheet_link_tag    'hover.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

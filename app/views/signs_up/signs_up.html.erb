@@ -1,0 +1,90 @@
+<header>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo"><img class="siskos-logo" src="/assets/siskos.png"></a>
+            <ul id="items-menu" class="right ">
+		<% if session[:client_id].nil? %>
+                	
+                	<li id="login" class="waves-effect waves-light btn">
+                    	<div class="div-option"><img class="icono-silueta" src="/assets/index/silueta.png"></div>
+			<%= link_to 'login'  do %>                    	
+			<p>Login</p><br>
+                    	
+			<%end%>			
+                   	</li>
+		
+		
+		<% else %>
+		<li  class="waves-effect waves-teal btn">
+                    	<div class="div-option"><img class="icono-silueta" src="/assets/index/silueta.png"></div>
+         		<%= button_to :action => 'destroy' do %>                    	
+				<p>Cerrar </p><br>
+                    		<%flash.each do |name,msg| -%>
+					<%= content_tag :div,msg, class: name%>
+				<%end-%>
+			<%end%>	
+		</li>	
+		<%end%>
+		
+                <li class="waves-effect waves-light btn">
+                    <div class="div-option"><img class="icono-silueta" src="/assets/index/cart.png"></div>
+                    <a href="cart"><p>Carrito</p></a>
+				</li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<section>
+	<li id="register" class="waves-effect waves-teal ">
+
+		  
+
+		<div><p>Crear cuenta</p></div>
+		<ul id="dropdown1" >
+			<%= form_for(:client, :url => {:controller => 'signs_up', :action => 'create'}) do |f| %>
+
+				<%= f.text_field :name, :placeholder => "Nombre", :id => "nombre"%>
+					<% for message_error in @client.errors[:name] %>
+						<a style="color:red;">* <%= message_error %></a>
+					<% end %>
+				<%= f.text_field :surname, :placeholder => "Apellidos", :id => "apellidos"%>
+					<% for message_error in @client.errors[:surname] %>
+					<a style="color:red;">* <%= message_error %></a>
+				<% end %>
+				<%= f.email_field :email, :placeholder => "Correo", :id => "correo-registro"%>
+					<% for message_error in @client.errors[:email] %>
+					<a style="color:red;">* <%= message_error %></a>
+				<% end %>
+				<%= f.text_field :address, :placeholder => "Dirección", :id => "direccion"%>
+					<% for message_error in @client.errors[:address] %>
+					<a style="color:red;">* <%= message_error %></a>
+				<% end %>
+				<%= f.password_field :password, :placeholder => "Contraseña", :id => "password-registro",:title => "Formato de la contraseña: mínimo 6 caracteres"%>
+					<% for message_error in @client.errors[:password] %>
+					<a style="color:red;">* <%= message_error %></a>
+				<% end %>
+				<br>
+				<%= f.button :Registrar, :type => "submit", :id => "button-register", :class => "btn center-align"%>
+			<% end %>
+		</ul>
+			<!--<% if @client.errors.any? %>
+				<ul class="Signup_Errors">
+						<% for message_error in @client.errors.full_messages %>
+						<li style="color: red">* <%= message_error %></li>
+						<% end %>
+				</ul>
+			<% end %>-->
+		</li>
+</section>
+
+
+<!--Footer-->
+<section>
+	<%= render "footer" %>
+</section>
+<script src="/assets/jquery.min.js"></script>
+<script type="text/javascript" src="assets/jquery-ui.min.js"></script>
+<script type="text/javascript" src="assets/script_signs_up.js"></script>
+
+<!--Fin footer-->
